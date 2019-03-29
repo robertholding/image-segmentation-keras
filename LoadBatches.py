@@ -33,10 +33,6 @@ def getImageArr( path , width , height , imgNorm="sub_mean" , odering='channels_
 			img = np.rollaxis(img, 2, 0)
 		return img
 
-
-
-
-
 def getSegmentationArr( path , nClasses ,  width , height  ):
 
 	seg_labels = np.zeros((  height , width  , nClasses ))

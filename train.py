@@ -2,7 +2,7 @@ import argparse
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from Models import VGGUnet, VGGSegnet, Utils,  Segnet, PSPNet, FCN8, FCN32
+from Models import VGGUnet, VGGSegnet, Utils, Unet, Segnet, PSPNet, FCN8, FCN32
 import LoadBatches
 
 
@@ -12,8 +12,8 @@ parser.add_argument("--save_weights_path", type = str  )
 parser.add_argument("--train_images", type = str  )
 parser.add_argument("--train_annotations", type = str  )
 parser.add_argument("--n_classes", type=int )
-parser.add_argument("--input_height", type=int , default = 224  )
-parser.add_argument("--input_width", type=int , default = 224 )
+parser.add_argument("--input_height", type=int, default=224 )
+parser.add_argument("--input_width", type=int, default=224 )
 
 parser.add_argument('--validate',action='store_false')
 parser.add_argument("--val_images", type = str , default = "")

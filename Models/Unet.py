@@ -16,7 +16,7 @@ from keras.layers.advanced_activations import LeakyReLU
 from keras.optimizers import Adam , SGD
 from keras.layers.embeddings import Embedding
 from keras.utils import np_utils
-from keras.regularizers import ActivityRegularizer
+# from keras.regularizers import ActivityRegularizer
 from keras import backend as K
 
 
