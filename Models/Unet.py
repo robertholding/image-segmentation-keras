@@ -5,8 +5,8 @@
 from keras.models import Sequential
 from keras.layers import Reshape
 from keras.models import Model
-from keras.layers.core import Layer, Dense, Dropout, Activation, Flatten, Reshape, Merge, Permute
-from keras.layers import Input, merge, Convolution2D, MaxPooling2D, UpSampling2D, Reshape, core, Dropout
+from keras.layers.core import Layer, Dense, Dropout, Activation, Flatten, Reshape,Permute
+from keras.layers import Input, Concatenate, Convolution2D, MaxPooling2D, UpSampling2D, Reshape, core, Dropout
 from keras.layers.normalization import BatchNormalization
 from keras.layers.convolutional import Convolution3D, MaxPooling3D, ZeroPadding3D , ZeroPadding3D , UpSampling3D
 from keras.layers.convolutional import Convolution2D, MaxPooling2D, UpSampling2D, ZeroPadding2D
@@ -40,12 +40,12 @@ def Unet (nClasses , optimizer=None , input_width=360 , input_height=480 , nChan
     conv3 = Dropout(0.2)(conv3)
     conv3 = Convolution2D(128, 3, 3, activation='relu', border_mode='same')(conv3)
 
-    up1 = merge([UpSampling2D(size=(2, 2))(conv3), conv2], mode='concat', concat_axis=1)
+    up1 = Concatenate([UpSampling2D(size=(2, 2))(conv3), conv2], concat_axis=1)
     conv4 = Convolution2D(64, 3, 3, activation='relu', border_mode='same')(up1)
     conv4 = Dropout(0.2)(conv4)
     conv4 = Convolution2D(64, 3, 3, activation='relu', border_mode='same')(conv4)
     
-    up2 = merge([UpSampling2D(size=(2, 2))(conv4), conv1], mode='concat', concat_axis=1)
+    up2 = Concatenate([UpSampling2D(size=(2, 2))(conv4), conv1], concat_axis=1)
     conv5 = Convolution2D(32, 3, 3, activation='relu', border_mode='same')(up2)
     conv5 = Dropout(0.2)(conv5)
     conv5 = Convolution2D(32, 3, 3, activation='relu', border_mode='same')(conv5)
@@ -66,4 +66,5 @@ def Unet (nClasses , optimizer=None , input_width=360 , input_height=480 , nChan
 	
 	
 	
+
 

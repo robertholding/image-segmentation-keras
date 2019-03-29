@@ -4,7 +4,7 @@
 
 from keras.models import Sequential
 from keras.layers import Reshape
-from keras.layers import Merge
+# from keras.layers import Merge
 from keras.layers.core import Layer, Dense, Dropout, Activation, Flatten, Reshape, Permute
 from keras.layers.normalization import BatchNormalization
 from keras.layers.convolutional import Convolution3D, MaxPooling3D, ZeroPadding3D

@@ -1,5 +1,9 @@
 import argparse
-import Models , LoadBatches
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from Models import VGGUnet, VGGSegnet, Utils,  Segnet, PSPNet, FCN8, FCN32
+import LoadBatches
 
 
 
@@ -45,7 +49,8 @@ if validate:
 	val_segs_path = args.val_annotations
 	val_batch_size = args.val_batch_size
 
-modelFns = { 'vgg_segnet':Models.VGGSegnet.VGGSegnet , 'vgg_unet':Models.VGGUnet.VGGUnet , 'vgg_unet2':Models.VGGUnet.VGGUnet2 , 'fcn8':Models.FCN8.FCN8 , 'fcn32':Models.FCN32.FCN32   }
+modelFns = { 'vgg_segnet':VGGSegnet.VGGSegnet , 'vgg_unet':VGGUnet.VGGUnet , 'vgg_unet2':VGGUnet.VGGUnet2 ,
+            'fcn8':FCN8.FCN8 , 'fcn32':FCN32.FCN32   }
 modelFN = modelFns[ model_name ]
 
 m = modelFN( n_classes , input_height=input_height, input_width=input_width   )
@@ -58,7 +63,7 @@ if len( load_weights ) > 0:
 	m.load_weights(load_weights)
 
 
-print "Model output shape" ,  m.output_shape
+print ("Model output shape" ,  m.output_shape)
 
 output_height = m.outputHeight
 output_width = m.outputWidth

@@ -104,4 +104,6 @@ ENV/
 # Rope project settings
 .ropeproject
 
-
+#projects
+/weights
+*.swp

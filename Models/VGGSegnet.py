@@ -1,16 +1,11 @@
-
-
-
-
-
 from keras.models import *
 from keras.layers import *
 
 
 import os
-file_path = os.path.dirname( os.path.abspath(__file__) )
-VGG_Weights_path = file_path+"/../data/vgg16_weights_th_dim_ordering_th_kernels.h5"
-
+# file_path = os.path.dirname( os.path.abspath(__file__) )
+VGG_Weights_path = "/home/robert/HCS/anatomy_semantics/others_model_code/image-segmentation-keras/data/vgg16_weights_th_dim_ordering_th_kernels.h5"
+print("this is VGG weights:", VGG_Weights_path)
 
 def VGGSegnet( n_classes ,  input_height=416, input_width=608 , vgg_level=3):
 
